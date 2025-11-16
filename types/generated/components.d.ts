@@ -45,6 +45,18 @@ export interface SectionsOwnerPreview extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsTestimonialPreview extends Struct.ComponentSchema {
+  collectionName: 'components_sections_testimonial_previews';
+  info: {
+    displayName: 'Testimonial Preview';
+  };
+  attributes: {
+    background: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    headline: Schema.Attribute.String;
+    testimonial: Schema.Attribute.Component<'ui.testimonial', true>;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -134,12 +146,26 @@ export interface UiButton extends Struct.ComponentSchema {
   };
 }
 
+export interface UiTestimonial extends Struct.ComponentSchema {
+  collectionName: 'components_ui_testimonials';
+  info: {
+    displayName: 'Testimonial';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files'>;
+    name: Schema.Attribute.String;
+    rating: Schema.Attribute.Decimal;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'sections.discover-properties': SectionsDiscoverProperties;
       'sections.featured-preview': SectionsFeaturedPreview;
       'sections.owner-preview': SectionsOwnerPreview;
+      'sections.testimonial-preview': SectionsTestimonialPreview;
       'shared.media': SharedMedia;
       'shared.navigation-link': SharedNavigationLink;
       'shared.quote': SharedQuote;
@@ -147,6 +173,7 @@ declare module '@strapi/strapi' {
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
       'ui.button': UiButton;
+      'ui.testimonial': UiTestimonial;
     }
   }
 }

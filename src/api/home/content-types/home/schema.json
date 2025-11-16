@@ -20,7 +20,7 @@
         "videos"
       ]
     },
-    "discover_seciton": {
+    "discover_section": {
       "type": "component",
       "component": "sections.discover-properties",
       "repeatable": false
@@ -33,6 +33,11 @@
     "owner_section": {
       "type": "component",
       "component": "sections.owner-preview",
+      "repeatable": false
+    },
+    "testimonial": {
+      "type": "component",
+      "component": "ui.testimonial",
       "repeatable": false
     }
   }

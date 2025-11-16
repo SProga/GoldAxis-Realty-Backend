@@ -536,7 +536,7 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    discover_seciton: Schema.Attribute.Component<
+    discover_section: Schema.Attribute.Component<
       'sections.discover-properties',
       false
     >;
@@ -550,6 +550,7 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     owner_section: Schema.Attribute.Component<'sections.owner-preview', false>;
     publishedAt: Schema.Attribute.DateTime;
+    testimonial: Schema.Attribute.Component<'ui.testimonial', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

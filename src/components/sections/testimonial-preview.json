@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_testimonial_previews",
+  "info": {
+    "displayName": "Testimonial Preview"
+  },
+  "options": {},
+  "attributes": {
+    "headline": {
+      "type": "string"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "testimonial": {
+      "type": "component",
+      "component": "ui.testimonial",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
