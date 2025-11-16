@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_sections_owner_previews",
+  "info": {
+    "displayName": "Owner preview"
+  },
+  "options": {},
+  "attributes": {
+    "headline": {
+      "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "background": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "button_learn_more": {
+      "type": "component",
+      "component": "ui.button",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

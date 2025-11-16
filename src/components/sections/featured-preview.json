@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_featured_previews",
+  "info": {
+    "displayName": "Featured preview"
+  },
+  "options": {},
+  "attributes": {
+    "featured_headline": {
+      "type": "blocks"
+    },
+    "properties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::property.property"
+    },
+    "button_featured": {
+      "type": "component",
+      "component": "ui.button",
+      "repeatable": false
+    },
+    "featured_description": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,105 @@
+{
+  "kind": "collectionType",
+  "collectionName": "properties",
+  "info": {
+    "singularName": "property",
+    "pluralName": "properties",
+    "displayName": "Property"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "price_label": {
+      "type": "string"
+    },
+    "property_status": {
+      "type": "enumeration",
+      "enum": [
+        "for_sale",
+        "for_rent",
+        "sold",
+        "rented",
+        "off_market"
+      ]
+    },
+    "listing_type": {
+      "type": "enumeration",
+      "enum": [
+        "residential",
+        "commerical",
+        "land",
+        "vacation_rental",
+        "airbnb"
+      ]
+    },
+    "bedrooms": {
+      "type": "integer"
+    },
+    "bathrooms": {
+      "type": "decimal"
+    },
+    "floor_area": {
+      "type": "decimal"
+    },
+    "floor_area_unit": {
+      "type": "enumeration",
+      "enum": [
+        "sq_ft",
+        "sq_m",
+        "acre",
+        "hectare"
+      ]
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "furnished": {
+      "type": "boolean",
+      "default": false
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "longitude": {
+      "type": "decimal"
+    },
+    "full_address": {
+      "type": "string"
+    },
+    "street_address": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "property_type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::property-type.property-type",
+      "inversedBy": "properties"
+    }
+  }
+}

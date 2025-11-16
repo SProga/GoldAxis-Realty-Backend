@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_discover_properties",
+  "info": {
+    "displayName": "Discover properties"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "button_all_properties": {
+      "type": "component",
+      "component": "ui.button",
+      "repeatable": false
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  },
+  "config": {}
+}
