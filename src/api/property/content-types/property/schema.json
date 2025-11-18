@@ -29,16 +29,6 @@
     "price_label": {
       "type": "string"
     },
-    "property_status": {
-      "type": "enumeration",
-      "enum": [
-        "for_sale",
-        "for_rent",
-        "sold",
-        "rented",
-        "off_market"
-      ]
-    },
     "listing_type": {
       "type": "enumeration",
       "enum": [
@@ -100,6 +90,11 @@
       "relation": "manyToOne",
       "target": "api::property-type.property-type",
       "inversedBy": "properties"
+    },
+    "property_status": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::property-status.property-status"
     }
   }
 }

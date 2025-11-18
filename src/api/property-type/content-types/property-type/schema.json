@@ -4,7 +4,7 @@
   "info": {
     "singularName": "property-type",
     "pluralName": "property-types",
-    "displayName": "PropertyType"
+    "displayName": "Property Type"
   },
   "options": {
     "draftAndPublish": true
@@ -30,6 +30,9 @@
       "relation": "oneToMany",
       "target": "api::property.property",
       "mappedBy": "property_type"
+    },
+    "code": {
+      "type": "string"
     }
   }
 }

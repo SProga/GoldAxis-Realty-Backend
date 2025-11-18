@@ -585,11 +585,43 @@ export interface ApiNavigationNavigation extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPropertyStatusPropertyStatus
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'property_statuses';
+  info: {
+    displayName: 'Property Status';
+    pluralName: 'property-statuses';
+    singularName: 'property-status';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    icon: Schema.Attribute.Media<'images' | 'files'>;
+    label: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::property-status.property-status'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPropertyTypePropertyType
   extends Struct.CollectionTypeSchema {
   collectionName: 'property_types';
   info: {
-    displayName: 'PropertyType';
+    displayName: 'Property Type';
     pluralName: 'property-types';
     singularName: 'property-type';
   };
@@ -597,6 +629,7 @@ export interface ApiPropertyTypePropertyType
     draftAndPublish: true;
   };
   attributes: {
+    code: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -658,8 +691,9 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     longitude: Schema.Attribute.Decimal;
     price: Schema.Attribute.Decimal;
     price_label: Schema.Attribute.String;
-    property_status: Schema.Attribute.Enumeration<
-      ['for_sale', 'for_rent', 'sold', 'rented', 'off_market']
+    property_status: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::property-status.property-status'
     >;
     property_type: Schema.Attribute.Relation<
       'manyToOne',
@@ -1191,6 +1225,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
       'api::navigation.navigation': ApiNavigationNavigation;
+      'api::property-status.property-status': ApiPropertyStatusPropertyStatus;
       'api::property-type.property-type': ApiPropertyTypePropertyType;
       'api::property.property': ApiPropertyProperty;
       'plugin::content-releases.release': PluginContentReleasesRelease;
