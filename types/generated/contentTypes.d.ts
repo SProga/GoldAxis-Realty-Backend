@@ -585,6 +585,38 @@ export interface ApiNavigationNavigation extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPropertyLocationTypePropertyLocationType
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'property_location_types';
+  info: {
+    displayName: 'Property Location Type';
+    pluralName: 'property-location-types';
+    singularName: 'property-location-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    icon: Schema.Attribute.Media<'images' | 'files'>;
+    label: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::property-location-type.property-location-type'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPropertyStatusPropertyStatus
   extends Struct.CollectionTypeSchema {
   collectionName: 'property_statuses';
@@ -679,9 +711,6 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     furnished: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     images: Schema.Attribute.Media<'images' | 'files', true>;
     latitude: Schema.Attribute.Decimal;
-    listing_type: Schema.Attribute.Enumeration<
-      ['residential', 'commerical', 'land', 'vacation_rental', 'airbnb']
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -691,6 +720,10 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     longitude: Schema.Attribute.Decimal;
     price: Schema.Attribute.Decimal;
     price_label: Schema.Attribute.String;
+    property_location_types: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::property-location-type.property-location-type'
+    >;
     property_status: Schema.Attribute.Relation<
       'oneToOne',
       'api::property-status.property-status'
@@ -1225,6 +1258,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
       'api::navigation.navigation': ApiNavigationNavigation;
+      'api::property-location-type.property-location-type': ApiPropertyLocationTypePropertyLocationType;
       'api::property-status.property-status': ApiPropertyStatusPropertyStatus;
       'api::property-type.property-type': ApiPropertyTypePropertyType;
       'api::property.property': ApiPropertyProperty;

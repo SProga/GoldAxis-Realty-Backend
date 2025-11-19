@@ -29,16 +29,6 @@
     "price_label": {
       "type": "string"
     },
-    "listing_type": {
-      "type": "enumeration",
-      "enum": [
-        "residential",
-        "commerical",
-        "land",
-        "vacation_rental",
-        "airbnb"
-      ]
-    },
     "bedrooms": {
       "type": "integer"
     },
@@ -95,6 +85,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::property-status.property-status"
+    },
+    "property_location_types": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::property-location-type.property-location-type"
     }
   }
 }

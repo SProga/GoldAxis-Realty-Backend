@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "property_location_types",
+  "info": {
+    "singularName": "property-location-type",
+    "pluralName": "property-location-types",
+    "displayName": "Property Location Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "slug": {
+      "type": "uid"
+    }
+  }
+}
