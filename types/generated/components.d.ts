@@ -45,6 +45,19 @@ export interface SectionsOwnerPreview extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsServicesPreview extends Struct.ComponentSchema {
+  collectionName: 'components_sections_services_previews';
+  info: {
+    displayName: 'Services preview';
+  };
+  attributes: {
+    service_card: Schema.Attribute.Component<'ui.service-card', true>;
+    title: Schema.Attribute.String;
+    title_heading: Schema.Attribute.String;
+    title_subheading: Schema.Attribute.Text;
+  };
+}
+
 export interface SectionsTestimonialPreview extends Struct.ComponentSchema {
   collectionName: 'components_sections_testimonial_previews';
   info: {
@@ -131,6 +144,16 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface UiAmenities extends Struct.ComponentSchema {
+  collectionName: 'components_ui_amenities';
+  info: {
+    displayName: 'Amenities';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+  };
+}
+
 export interface UiButton extends Struct.ComponentSchema {
   collectionName: 'components_ui_buttons';
   info: {
@@ -143,6 +166,18 @@ export interface UiButton extends Struct.ComponentSchema {
     variant: Schema.Attribute.Enumeration<
       ['primary', 'secondary', 'info', 'warning', 'danger']
     >;
+  };
+}
+
+export interface UiServiceCard extends Struct.ComponentSchema {
+  collectionName: 'components_ui_service_cards';
+  info: {
+    displayName: 'Service Card';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    icon: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -165,6 +200,7 @@ declare module '@strapi/strapi' {
       'sections.discover-properties': SectionsDiscoverProperties;
       'sections.featured-preview': SectionsFeaturedPreview;
       'sections.owner-preview': SectionsOwnerPreview;
+      'sections.services-preview': SectionsServicesPreview;
       'sections.testimonial-preview': SectionsTestimonialPreview;
       'shared.media': SharedMedia;
       'shared.navigation-link': SharedNavigationLink;
@@ -172,7 +208,9 @@ declare module '@strapi/strapi' {
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
+      'ui.amenities': UiAmenities;
       'ui.button': UiButton;
+      'ui.service-card': UiServiceCard;
       'ui.testimonial': UiTestimonial;
     }
   }

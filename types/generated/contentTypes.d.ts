@@ -536,21 +536,15 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    discover_section: Schema.Attribute.Component<
-      'sections.discover-properties',
-      false
-    >;
-    featured_section: Schema.Attribute.Component<
-      'sections.featured-preview',
-      false
-    >;
     hero_image: Schema.Attribute.Media<'images' | 'files' | 'videos', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
       Schema.Attribute.Private;
-    owner_section: Schema.Attribute.Component<'sections.owner-preview', false>;
     publishedAt: Schema.Attribute.DateTime;
-    testimonial: Schema.Attribute.Component<'ui.testimonial', false>;
+    section_preview: Schema.Attribute.Component<
+      'sections.services-preview',
+      false
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -585,6 +579,39 @@ export interface ApiNavigationNavigation extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiParishParish extends Struct.CollectionTypeSchema {
+  collectionName: 'parishes';
+  info: {
+    displayName: 'Parish';
+    pluralName: 'parishes';
+    singularName: 'parish';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::parish.parish'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    properties: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::property.property'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPropertyLocationTypePropertyLocationType
   extends Struct.CollectionTypeSchema {
   collectionName: 'property_location_types';
@@ -597,7 +624,6 @@ export interface ApiPropertyLocationTypePropertyLocationType
     draftAndPublish: true;
   };
   attributes: {
-    code: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -610,7 +636,7 @@ export interface ApiPropertyLocationTypePropertyLocationType
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID;
+    slug: Schema.Attribute.UID<'label'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -707,9 +733,10 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     floor_area_unit: Schema.Attribute.Enumeration<
       ['sq_ft', 'sq_m', 'acre', 'hectare']
     >;
-    full_address: Schema.Attribute.String;
+    full_address: Schema.Attribute.String & Schema.Attribute.Required;
     furnished: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    images: Schema.Attribute.Media<'images' | 'files', true>;
+    images: Schema.Attribute.Media<'images' | 'files', true> &
+      Schema.Attribute.Required;
     latitude: Schema.Attribute.Decimal;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -718,8 +745,8 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     longitude: Schema.Attribute.Decimal;
-    price: Schema.Attribute.Decimal;
-    price_label: Schema.Attribute.String;
+    parish: Schema.Attribute.Relation<'manyToOne', 'api::parish.parish'>;
+    price: Schema.Attribute.Decimal & Schema.Attribute.Required;
     property_location_types: Schema.Attribute.Relation<
       'oneToMany',
       'api::property-location-type.property-location-type'
@@ -733,10 +760,9 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
       'api::property-type.property-type'
     >;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID;
-    street_address: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     summary: Schema.Attribute.String;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1258,6 +1284,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
       'api::navigation.navigation': ApiNavigationNavigation;
+      'api::parish.parish': ApiParishParish;
       'api::property-location-type.property-location-type': ApiPropertyLocationTypePropertyLocationType;
       'api::property-status.property-status': ApiPropertyStatusPropertyStatus;
       'api::property-type.property-type': ApiPropertyTypePropertyType;

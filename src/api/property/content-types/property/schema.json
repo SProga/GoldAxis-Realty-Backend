@@ -12,10 +12,13 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     },
     "description": {
       "type": "blocks"
@@ -24,10 +27,8 @@
       "type": "string"
     },
     "price": {
-      "type": "decimal"
-    },
-    "price_label": {
-      "type": "string"
+      "type": "decimal",
+      "required": true
     },
     "bedrooms": {
       "type": "integer"
@@ -62,14 +63,13 @@
       "type": "decimal"
     },
     "full_address": {
-      "type": "string"
-    },
-    "street_address": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "images": {
       "type": "media",
       "multiple": true,
+      "required": true,
       "allowedTypes": [
         "images",
         "files"
@@ -90,6 +90,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::property-location-type.property-location-type"
+    },
+    "parish": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::parish.parish",
+      "inversedBy": "properties"
     }
   }
 }

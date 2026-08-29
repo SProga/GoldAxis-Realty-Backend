@@ -20,24 +20,9 @@
         "videos"
       ]
     },
-    "discover_section": {
+    "section_preview": {
       "type": "component",
-      "component": "sections.discover-properties",
-      "repeatable": false
-    },
-    "featured_section": {
-      "type": "component",
-      "component": "sections.featured-preview",
-      "repeatable": false
-    },
-    "owner_section": {
-      "type": "component",
-      "component": "sections.owner-preview",
-      "repeatable": false
-    },
-    "testimonial": {
-      "type": "component",
-      "component": "ui.testimonial",
+      "component": "sections.services-preview",
       "repeatable": false
     }
   }

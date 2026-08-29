@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_ui_amenities",
+  "info": {
+    "displayName": "Amenities"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

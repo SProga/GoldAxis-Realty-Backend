@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_services_previews",
+  "info": {
+    "displayName": "Services preview"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "title_heading": {
+      "type": "string"
+    },
+    "title_subheading": {
+      "type": "text"
+    },
+    "service_card": {
+      "type": "component",
+      "component": "ui.service-card",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
