@@ -172,6 +172,18 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSocialMedia extends Struct.ComponentSchema {
+  collectionName: 'components_shared_social_medias';
+  info: {
+    displayName: 'Social Media';
+  };
+  attributes: {
+    icon: Schema.Attribute.Media<'images'>;
+    link: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface UiAmenities extends Struct.ComponentSchema {
   collectionName: 'components_ui_amenities';
   info: {
@@ -238,6 +250,7 @@ declare module '@strapi/strapi' {
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
+      'shared.social-media': SharedSocialMedia;
       'ui.amenities': UiAmenities;
       'ui.button': UiButton;
       'ui.service-card': UiServiceCard;

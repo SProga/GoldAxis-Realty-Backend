@@ -1,0 +1,61 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site Settings"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "site_name": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "whatsapp": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "default_currency": {
+      "type": "enumeration",
+      "enum": [
+        "BBD",
+        "USD",
+        "GBP",
+        "EUR",
+        "CAD"
+      ]
+    },
+    "social_link": {
+      "type": "component",
+      "component": "shared.social-media",
+      "repeatable": true
+    }
+  }
+}
