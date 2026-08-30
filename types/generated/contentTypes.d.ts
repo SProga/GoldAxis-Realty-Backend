@@ -533,15 +533,23 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    contact_preview: Schema.Attribute.Component<
+      'sections.contact-preview',
+      false
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     hero_image: Schema.Attribute.Media<'images' | 'files' | 'videos', true>;
+    legacy_preview: Schema.Attribute.Component<
+      'sections.legacy-preview',
+      false
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    section_preview: Schema.Attribute.Component<
+    service_preview: Schema.Attribute.Component<
       'sections.services-preview',
       false
     >;

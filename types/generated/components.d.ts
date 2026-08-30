@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface SectionsContactPreview extends Struct.ComponentSchema {
+  collectionName: 'components_sections_contact_previews';
+  info: {
+    displayName: 'Contact Preview';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    eyebrow: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsDiscoverProperties extends Struct.ComponentSchema {
   collectionName: 'components_sections_discover_properties';
   info: {
@@ -29,6 +41,22 @@ export interface SectionsFeaturedPreview extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsLegacyPreview extends Struct.ComponentSchema {
+  collectionName: 'components_sections_legacy_previews';
+  info: {
+    displayName: 'Legacy Preview';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    eyebrow: Schema.Attribute.String;
+    features: Schema.Attribute.Component<'ui.service-card', true>;
+    image: Schema.Attribute.Media<'images'>;
+    stat_label: Schema.Attribute.String;
+    stat_number: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsOwnerPreview extends Struct.ComponentSchema {
   collectionName: 'components_sections_owner_previews';
   info: {
@@ -51,10 +79,10 @@ export interface SectionsServicesPreview extends Struct.ComponentSchema {
     displayName: 'Services preview';
   };
   attributes: {
+    description: Schema.Attribute.Text;
+    eyebrow: Schema.Attribute.String;
     service_card: Schema.Attribute.Component<'ui.service-card', true>;
     title: Schema.Attribute.String;
-    title_heading: Schema.Attribute.String;
-    title_subheading: Schema.Attribute.Text;
   };
 }
 
@@ -197,8 +225,10 @@ export interface UiTestimonial extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'sections.contact-preview': SectionsContactPreview;
       'sections.discover-properties': SectionsDiscoverProperties;
       'sections.featured-preview': SectionsFeaturedPreview;
+      'sections.legacy-preview': SectionsLegacyPreview;
       'sections.owner-preview': SectionsOwnerPreview;
       'sections.services-preview': SectionsServicesPreview;
       'sections.testimonial-preview': SectionsTestimonialPreview;

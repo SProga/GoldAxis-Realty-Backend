@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_legacy_previews",
+  "info": {
+    "displayName": "Legacy Preview"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "stat_label": {
+      "type": "string"
+    },
+    "stat_number": {
+      "type": "string"
+    },
+    "features": {
+      "type": "component",
+      "component": "ui.service-card",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

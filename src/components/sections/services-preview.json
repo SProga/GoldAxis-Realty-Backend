@@ -5,13 +5,13 @@
   },
   "options": {},
   "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
     "title": {
       "type": "string"
     },
-    "title_heading": {
-      "type": "string"
-    },
-    "title_subheading": {
+    "description": {
       "type": "text"
     },
     "service_card": {

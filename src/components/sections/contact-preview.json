@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_contact_previews",
+  "info": {
+    "displayName": "Contact Preview"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

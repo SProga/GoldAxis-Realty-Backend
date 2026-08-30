@@ -20,9 +20,19 @@
         "videos"
       ]
     },
-    "section_preview": {
+    "service_preview": {
       "type": "component",
       "component": "sections.services-preview",
+      "repeatable": false
+    },
+    "legacy_preview": {
+      "type": "component",
+      "component": "sections.legacy-preview",
+      "repeatable": false
+    },
+    "contact_preview": {
+      "type": "component",
+      "component": "sections.contact-preview",
       "repeatable": false
     }
   }
