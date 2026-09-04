@@ -620,6 +620,41 @@ export interface ApiParishParish extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPropertyAmenityPropertyAmenity
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'property_amenities';
+  info: {
+    displayName: 'Property Amenities';
+    pluralName: 'property-amenities';
+    singularName: 'property-amenity';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    icon: Schema.Attribute.Media<'images' | 'files'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::property-amenity.property-amenity'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    properties: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::property.property'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPropertyLocationTypePropertyLocationType
   extends Struct.CollectionTypeSchema {
   collectionName: 'property_location_types';
@@ -683,42 +718,6 @@ export interface ApiPropertyStatusPropertyStatus
   };
 }
 
-export interface ApiPropertyTypePropertyType
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'property_types';
-  info: {
-    displayName: 'Property Type';
-    pluralName: 'property-types';
-    singularName: 'property-type';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    code: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    icon: Schema.Attribute.Media<'images' | 'files'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::property-type.property-type'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    properties: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::property.property'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
   collectionName: 'properties';
   info: {
@@ -755,6 +754,10 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     longitude: Schema.Attribute.Decimal;
     parish: Schema.Attribute.Relation<'manyToOne', 'api::parish.parish'>;
     price: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    property_ameneties: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::property-amenity.property-amenity'
+    >;
     property_location_types: Schema.Attribute.Relation<
       'oneToMany',
       'api::property-location-type.property-location-type'
@@ -763,14 +766,40 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
       'oneToOne',
       'api::property-status.property-status'
     >;
-    property_type: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::property-type.property-type'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     summary: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiServiceService extends Struct.SingleTypeSchema {
+  collectionName: 'services';
+  info: {
+    displayName: 'Service';
+    pluralName: 'services';
+    singularName: 'service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    footer_cta: Schema.Attribute.Component<'shared.footer-cta', false>;
+    hero: Schema.Attribute.Component<'shared.hero', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service.service'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    services: Schema.Attribute.Component<'sections.services-type', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1331,10 +1360,11 @@ declare module '@strapi/strapi' {
       'api::home.home': ApiHomeHome;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::parish.parish': ApiParishParish;
+      'api::property-amenity.property-amenity': ApiPropertyAmenityPropertyAmenity;
       'api::property-location-type.property-location-type': ApiPropertyLocationTypePropertyLocationType;
       'api::property-status.property-status': ApiPropertyStatusPropertyStatus;
-      'api::property-type.property-type': ApiPropertyTypePropertyType;
       'api::property.property': ApiPropertyProperty;
+      'api::service.service': ApiServiceService;
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

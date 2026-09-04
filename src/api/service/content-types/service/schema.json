@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "component": "shared.hero",
+      "repeatable": false
+    },
+    "services": {
+      "type": "component",
+      "component": "sections.services-type",
+      "repeatable": true
+    },
+    "footer_cta": {
+      "type": "component",
+      "component": "shared.footer-cta",
+      "repeatable": false
+    }
+  }
+}

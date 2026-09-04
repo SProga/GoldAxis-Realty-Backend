@@ -86,6 +86,22 @@ export interface SectionsServicesPreview extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsServicesType extends Struct.ComponentSchema {
+  collectionName: 'components_sections_services_types';
+  info: {
+    displayName: 'Services Type';
+  };
+  attributes: {
+    background_image: Schema.Attribute.Media<'images' | 'videos', true>;
+    description: Schema.Attribute.Blocks;
+    eyebrow: Schema.Attribute.String;
+    features: Schema.Attribute.Component<'ui.icon-with-text', true>;
+    icon: Schema.Attribute.Media<'images'>;
+    image_alignment: Schema.Attribute.Media<'images' | 'videos'>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SectionsTestimonialPreview extends Struct.ComponentSchema {
   collectionName: 'components_sections_testimonial_previews';
   info: {
@@ -95,6 +111,33 @@ export interface SectionsTestimonialPreview extends Struct.ComponentSchema {
     background: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     headline: Schema.Attribute.String;
     testimonial: Schema.Attribute.Component<'ui.testimonial', true>;
+  };
+}
+
+export interface SharedFooterCta extends Struct.ComponentSchema {
+  collectionName: 'components_shared_footer_cta_s';
+  info: {
+    displayName: 'Footer CTA ';
+  };
+  attributes: {
+    background_image: Schema.Attribute.Media<'images' | 'videos'>;
+    button: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    eyebrow: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface SharedHero extends Struct.ComponentSchema {
+  collectionName: 'components_shared_heroes';
+  info: {
+    displayName: 'Hero';
+  };
+  attributes: {
+    background_image: Schema.Attribute.Media<'images' | 'videos'>;
+    description: Schema.Attribute.Text;
+    eyebrow: Schema.Attribute.String;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -209,6 +252,17 @@ export interface UiButton extends Struct.ComponentSchema {
   };
 }
 
+export interface UiIconWithText extends Struct.ComponentSchema {
+  collectionName: 'components_ui_icon_with_texts';
+  info: {
+    displayName: 'Icon with Text';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images'>;
+  };
+}
+
 export interface UiServiceCard extends Struct.ComponentSchema {
   collectionName: 'components_ui_service_cards';
   info: {
@@ -243,7 +297,10 @@ declare module '@strapi/strapi' {
       'sections.legacy-preview': SectionsLegacyPreview;
       'sections.owner-preview': SectionsOwnerPreview;
       'sections.services-preview': SectionsServicesPreview;
+      'sections.services-type': SectionsServicesType;
       'sections.testimonial-preview': SectionsTestimonialPreview;
+      'shared.footer-cta': SharedFooterCta;
+      'shared.hero': SharedHero;
       'shared.media': SharedMedia;
       'shared.navigation-link': SharedNavigationLink;
       'shared.quote': SharedQuote;
@@ -253,6 +310,7 @@ declare module '@strapi/strapi' {
       'shared.social-media': SharedSocialMedia;
       'ui.amenities': UiAmenities;
       'ui.button': UiButton;
+      'ui.icon-with-text': UiIconWithText;
       'ui.service-card': UiServiceCard;
       'ui.testimonial': UiTestimonial;
     }

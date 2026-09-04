@@ -41,12 +41,7 @@
     },
     "floor_area_unit": {
       "type": "enumeration",
-      "enum": [
-        "sq_ft",
-        "sq_m",
-        "acre",
-        "hectare"
-      ]
+      "enum": ["sq_ft", "sq_m", "acre", "hectare"]
     },
     "featured": {
       "type": "boolean",
@@ -70,15 +65,12 @@
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
+      "allowedTypes": ["images", "files"]
     },
-    "property_type": {
+    "property_ameneties": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::property-type.property-type",
+      "relation": "manyToMany",
+      "target": "api::property-amenity.property-amenity",
       "inversedBy": "properties"
     },
     "property_status": {

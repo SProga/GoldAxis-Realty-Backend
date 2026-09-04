@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_ui_icon_with_texts",
+  "info": {
+    "displayName": "Icon with Text"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
