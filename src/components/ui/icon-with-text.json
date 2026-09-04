@@ -5,15 +5,13 @@
   },
   "options": {},
   "attributes": {
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "description": {
       "type": "text"
+    },
+    "icon": {
+      "type": "component",
+      "component": "ui.icons",
+      "repeatable": false
     }
   },
   "config": {}

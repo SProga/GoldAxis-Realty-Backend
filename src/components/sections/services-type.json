@@ -12,14 +12,7 @@
       "type": "string"
     },
     "description": {
-      "type": "blocks"
-    },
-    "icon": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "type": "text"
     },
     "features": {
       "type": "component",
@@ -34,12 +27,17 @@
         "videos"
       ]
     },
+    "icon": {
+      "type": "component",
+      "component": "ui.icons",
+      "repeatable": false
+    },
     "image_alignment": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "videos"
+      "type": "enumeration",
+      "default": "left",
+      "enum": [
+        "left",
+        "right"
       ]
     }
   },

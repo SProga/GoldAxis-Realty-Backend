@@ -93,11 +93,12 @@ export interface SectionsServicesType extends Struct.ComponentSchema {
   };
   attributes: {
     background_image: Schema.Attribute.Media<'images' | 'videos', true>;
-    description: Schema.Attribute.Blocks;
+    description: Schema.Attribute.Text;
     eyebrow: Schema.Attribute.String;
     features: Schema.Attribute.Component<'ui.icon-with-text', true>;
-    icon: Schema.Attribute.Media<'images'>;
-    image_alignment: Schema.Attribute.Media<'images' | 'videos'>;
+    icon: Schema.Attribute.Component<'ui.icons', false>;
+    image_alignment: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.DefaultTo<'left'>;
     title: Schema.Attribute.String;
   };
 }
@@ -259,7 +260,178 @@ export interface UiIconWithText extends Struct.ComponentSchema {
   };
   attributes: {
     description: Schema.Attribute.Text;
-    icon: Schema.Attribute.Media<'images'>;
+    icon: Schema.Attribute.Component<'ui.icons', false>;
+  };
+}
+
+export interface UiIcons extends Struct.ComponentSchema {
+  collectionName: 'components_ui_icons';
+  info: {
+    displayName: 'Icons';
+  };
+  attributes: {
+    code: Schema.Attribute.Enumeration<
+      [
+        'Accessibility',
+        'Activity',
+        'AirVent',
+        'Armchair',
+        'ArrowDown',
+        'ArrowLeft',
+        'ArrowRight',
+        'ArrowUp',
+        'ArrowUpDown',
+        'Award',
+        'BadgeCheck',
+        'BadgeDollarSign',
+        'Banknote',
+        'Bath',
+        'BatteryCharging',
+        'Bed',
+        'BedDouble',
+        'BellRing',
+        'Bike',
+        'BriefcaseBusiness',
+        'Building',
+        'Building2',
+        'Cable',
+        'Calendar',
+        'CalendarDays',
+        'Camera',
+        'Car',
+        'CarFront',
+        'ChartColumn',
+        'ChartNoAxesCombined',
+        'ChartPie',
+        'Check',
+        'CheckCheck',
+        'ChefHat',
+        'ChevronDown',
+        'ChevronLeft',
+        'ChevronRight',
+        'ChevronUp',
+        'CircleAlert',
+        'CircleCheck',
+        'CircleDollarSign',
+        'CircleGauge',
+        'CircleHelp',
+        'CircleParking',
+        'CircleUserRound',
+        'ClipboardCheck',
+        'Clock',
+        'Cctv',
+        'Coffee',
+        'Compass',
+        'ConciergeBell',
+        'Contact',
+        'CookingPot',
+        'Crown',
+        'DollarSign',
+        'DoorClosed',
+        'DoorOpen',
+        'Download',
+        'Droplets',
+        'Dumbbell',
+        'ExternalLink',
+        'Eye',
+        'Fan',
+        'Fence',
+        'FileText',
+        'Filter',
+        'Flame',
+        'Gem',
+        'Globe2',
+        'Hammer',
+        'Handshake',
+        'HardHat',
+        'Headphones',
+        'Heart',
+        'Home',
+        'Hotel',
+        'House',
+        'HouseCheck',
+        'HouseKey',
+        'HousePlus',
+        'Image',
+        'Images',
+        'Info',
+        'Key',
+        'KeyRound',
+        'LampFloor',
+        'Landmark',
+        'LandPlot',
+        'Layers',
+        'ListChecks',
+        'ListFilter',
+        'LocateFixed',
+        'LockKeyhole',
+        'Mail',
+        'Map',
+        'MapPin',
+        'MapPinned',
+        'MapPinHouse',
+        'Maximize',
+        'Maximize2',
+        'MessageCircle',
+        'MessageSquareText',
+        'Minus',
+        'Mountain',
+        'MoveUpRight',
+        'Navigation',
+        'NotebookText',
+        'Paintbrush',
+        'PanelsTopLeft',
+        'PenLine',
+        'PersonStanding',
+        'Phone',
+        'Plane',
+        'Play',
+        'PlugZap',
+        'Plus',
+        'ReceiptText',
+        'Refrigerator',
+        'Ruler',
+        'Sailboat',
+        'Satellite',
+        'Search',
+        'Send',
+        'Settings',
+        'Share',
+        'Share2',
+        'Shield',
+        'ShieldCheck',
+        'Ship',
+        'ShowerHead',
+        'Signature',
+        'SlidersHorizontal',
+        'Snowflake',
+        'Sofa',
+        'Sparkles',
+        'SquareCheck',
+        'SquareStack',
+        'Star',
+        'Sun',
+        'Target',
+        'TreePalm',
+        'Trees',
+        'TrendingUp',
+        'Trophy',
+        'Umbrella',
+        'User',
+        'UserRound',
+        'Users',
+        'Utensils',
+        'Video',
+        'WalletCards',
+        'Warehouse',
+        'Waves',
+        'Wifi',
+        'Wine',
+        'Wrench',
+        'X',
+        'Zap',
+      ]
+    >;
   };
 }
 
@@ -311,6 +483,7 @@ declare module '@strapi/strapi' {
       'ui.amenities': UiAmenities;
       'ui.button': UiButton;
       'ui.icon-with-text': UiIconWithText;
+      'ui.icons': UiIcons;
       'ui.service-card': UiServiceCard;
       'ui.testimonial': UiTestimonial;
     }
