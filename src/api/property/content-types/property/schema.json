@@ -21,7 +21,7 @@
       "required": true
     },
     "description": {
-      "type": "blocks"
+      "type": "text"
     },
     "summary": {
       "type": "string"
@@ -41,7 +41,12 @@
     },
     "floor_area_unit": {
       "type": "enumeration",
-      "enum": ["sq_ft", "sq_m", "acre", "hectare"]
+      "enum": [
+        "sq_ft",
+        "sq_m",
+        "acre",
+        "hectare"
+      ]
     },
     "featured": {
       "type": "boolean",
@@ -65,7 +70,10 @@
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": ["images", "files"]
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "property_ameneties": {
       "type": "relation",

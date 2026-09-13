@@ -21,13 +21,16 @@
     "icon": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images", "files"]
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "properties": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::property.property",
-      "mappedBy": "property_amenities"
+      "mappedBy": "property_ameneties"
     }
   }
 }

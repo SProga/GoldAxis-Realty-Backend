@@ -12,12 +12,81 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "hero_eyebrow": {
       "type": "string"
     },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": ["shared.media", "shared.quote", "shared.rich-text", "shared.slider"]
+    "hero_title": {
+      "type": "string"
+    },
+    "hero_description": {
+      "type": "text"
+    },
+    "hero_image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "hero_tagline": {
+      "type": "string"
+    },
+    "story_eyebrow": {
+      "type": "string"
+    },
+    "story_title": {
+      "type": "string"
+    },
+    "story_subtitle": {
+      "type": "string"
+    },
+    "story_description": {
+      "type": "text"
+    },
+    "story_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "story_stats": {
+      "type": "string"
+    },
+    "story_features": {
+      "type": "component",
+      "component": "ui.service-card",
+      "repeatable": true
+    },
+    "personal_eyebrow": {
+      "type": "string"
+    },
+    "personal_title": {
+      "type": "string"
+    },
+    "personal_subtitle": {
+      "type": "string"
+    },
+    "personal_description": {
+      "type": "text"
+    },
+    "personal_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "testimonials": {
+      "type": "component",
+      "component": "ui.testimonial",
+      "repeatable": true
+    },
+    "testimonial_eyebrow": {
+      "type": "string"
+    },
+    "testimonial_title": {
+      "type": "string"
     }
   }
 }

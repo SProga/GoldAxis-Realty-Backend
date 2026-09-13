@@ -442,17 +442,33 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    blocks: Schema.Attribute.DynamicZone<
-      ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    hero_description: Schema.Attribute.Text;
+    hero_eyebrow: Schema.Attribute.String;
+    hero_image: Schema.Attribute.Media<'images', true>;
+    hero_tagline: Schema.Attribute.String;
+    hero_title: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
       Schema.Attribute.Private;
+    personal_description: Schema.Attribute.Text;
+    personal_eyebrow: Schema.Attribute.String;
+    personal_image: Schema.Attribute.Media<'images'>;
+    personal_subtitle: Schema.Attribute.String;
+    personal_title: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
+    story_description: Schema.Attribute.Text;
+    story_eyebrow: Schema.Attribute.String;
+    story_features: Schema.Attribute.Component<'ui.service-card', true>;
+    story_image: Schema.Attribute.Media<'images'>;
+    story_stats: Schema.Attribute.String;
+    story_subtitle: Schema.Attribute.String;
+    story_title: Schema.Attribute.String;
+    testimonial_eyebrow: Schema.Attribute.String;
+    testimonial_title: Schema.Attribute.String;
+    testimonials: Schema.Attribute.Component<'ui.testimonial', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -734,7 +750,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
+    description: Schema.Attribute.Text;
     featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     floor_area: Schema.Attribute.Decimal;
     floor_area_unit: Schema.Attribute.Enumeration<
