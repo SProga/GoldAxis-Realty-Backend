@@ -121,10 +121,8 @@ export interface SharedFooterCta extends Struct.ComponentSchema {
     displayName: 'Footer CTA ';
   };
   attributes: {
-    background_image: Schema.Attribute.Media<'images' | 'videos'>;
     button: Schema.Attribute.String;
     description: Schema.Attribute.Text;
-    eyebrow: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
 }
